@@ -59,13 +59,11 @@ const ChatListScreen = ({navigation}) => {
     for(let i=0; i < username.length; i++){
         names.push(username[i].name)
     }
-    console.log(names)
     if(loading){
         return(
             <View style={[styles.container, styles.horizontal]}>
                 <ActivityIndicator /> 
             </View>
-            
         )
     }else{
         return(

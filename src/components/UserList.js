@@ -11,9 +11,6 @@ const UserList = (props) => {
             .add({
                 _id: 1,
             })
-            .then((docRef) => {
-                console.log(docRef.id);
-            })
             .catch((error) => console.log(error)).then(() => Navigation.navigate("Chat", {name : props.name}));
     }
     return (

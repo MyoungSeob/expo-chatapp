@@ -10,7 +10,6 @@ import ChatListScreen from "./src/screen/ChatListScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
-  // const navigation = useNavigation();
   const logout = () => {
     auth.signOut().then(() => {
       navigation.navigate("Login");
