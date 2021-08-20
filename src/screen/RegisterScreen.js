@@ -37,9 +37,7 @@ const RegisterScreen = () => {
       }).then(() => {
         db.collection("Users").add({
           name : name,
-        }).doc("names").then((docRef) => {
-          console.log(docRef.id);
-        })
+        }).doc("names")
         .catch((error) => console.log(error));
       });
   };

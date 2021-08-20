@@ -1,7 +1,6 @@
 import * as firebase from "firebase";
 import 'firebase/auth'
 import 'firebase/firestore'
-import "firebase/database"
 
 var firebaseConfig = {
     apiKey: "AIzaSyCtKiqmVEw6HO2-5-pg4w8pf96BRMNQL4Y",
@@ -20,5 +19,8 @@ if(firebase.apps.length === 0){
 }
 const db = app.firestore();
 const auth = firebase.auth();
-const database = firebase.database();
-export {db, auth, database}
+
+export {db, auth}
+
+// expo에서 firebase를 이용하기 위해 expo 공식 문서를 참고했습니다.
+// firebase에서 web app을 만든 후, 해당 내용들을 이용했습니다.

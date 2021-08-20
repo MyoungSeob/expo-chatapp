@@ -20,14 +20,8 @@ const ChatListScreen = ({navigation}) => {
               <Text>로그아웃</Text>
             </TouchableOpacity>
           ),
-          headerLeft: () => (
-            <TouchableOpacity
-                onPress={() => navigation.navigate("Chat")}
-            >
-                <Text>Make Chat</Text>
-            </TouchableOpacity>
-          ),
         });
+        // useEffect보다 조금 더 빠르게 이펙트를 수행하여, 화면이 빠르게 구성된다.
         const getUsername = async() => {
             try{
                 setLoading(true);
@@ -48,9 +42,10 @@ const ChatListScreen = ({navigation}) => {
             setLoading(false);
         };
         getUsername();
+        // async await을 이용하여 채팅방 목록을 구성하기 위한 회원들의 이름을 동기적으로 가져오기 위해
+        // 사용했습니다.
         return () => setLoading(false)
     }, [navigation]);
-
     const signOut = () => {
         auth
           .signOut()

@@ -1,24 +1,23 @@
 import React, {
   useCallback,
-  useEffect,
   useState,
   useLayoutEffect,
 } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import { auth, db } from "../../firebase";
 import { Bubble } from 'react-native-gifted-chat';
 
-const ChatScreen = ({ navigation }) => {
+const ChatScreen = ({ navigation, route }) => {
   const [messages, setMessages] = useState([]);
-
+  const readerName = route.params.name;
   const onSend = useCallback((messages = []) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
     );
     const { _id, createdAt, text, user } = messages[0];
 
-    db.collection("chats")
+    db.collection("Chatting "+`${readerName}`)
       .add({
         _id: _id,
         createdAt: createdAt,
@@ -46,7 +45,7 @@ const ChatScreen = ({ navigation }) => {
       ),
     });
     const unsubscribe = db
-      .collection("chats")
+      .collection("Chatting "+`${readerName}`)
       .orderBy("createdAt", "desc")
       .onSnapshot((snapshot) =>
         setMessages(

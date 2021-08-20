@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import { auth } from "../../firebase";
@@ -16,6 +15,7 @@ const LoginScreen = ({ navigation }) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log(user)
       if (user) {
         navigation.replace("ChatList");
       } else {
