@@ -7,24 +7,10 @@ import React, {
 import { View, Text, TouchableOpacity } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import { auth, db } from "../../firebase";
+import { Bubble } from 'react-native-gifted-chat';
 
 const ChatScreen = ({ navigation }) => {
   const [messages, setMessages] = useState([]);
-
-  useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: "Hello developer",
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://placeimg.com/140/140/any",
-        },
-      },
-    ]);
-  }, []);
 
   const onSend = useCallback((messages = []) => {
     setMessages((previousMessages) =>
@@ -55,7 +41,7 @@ const ChatScreen = ({ navigation }) => {
           }}
           onPress={signOut}
         >
-          <Text>로그아웃</Text>
+          <Text>logout</Text>
         </TouchableOpacity>
       ),
     });
@@ -92,9 +78,22 @@ const ChatScreen = ({ navigation }) => {
       messages={messages}
       onSend={(messages) => onSend(messages)}
       showAvatarForEveryMessage={true}
+      renderUsernameOnMessage={true}
       user={{
         _id: auth?.currentUser?.email,
         name: auth?.currentUser?.displayName,
+      }}
+      renderBubble={(props) => {
+        return(
+          <Bubble 
+          {...props}
+            wrapperStyle={{
+              left : {
+                backgroundColor : "#e3e3e3"
+              },
+            }}
+          />
+        )
       }}
     />
   );

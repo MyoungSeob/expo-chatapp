@@ -1,6 +1,8 @@
 import * as firebase from "firebase";
 import 'firebase/auth'
 import 'firebase/firestore'
+import "firebase/database"
+
 var firebaseConfig = {
     apiKey: "AIzaSyCtKiqmVEw6HO2-5-pg4w8pf96BRMNQL4Y",
     authDomain: "tideflochat.firebaseapp.com",
@@ -18,4 +20,5 @@ if(firebase.apps.length === 0){
 }
 const db = app.firestore();
 const auth = firebase.auth();
-export {db, auth}
+const database = firebase.database();
+export {db, auth, database}

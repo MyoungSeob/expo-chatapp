@@ -6,6 +6,7 @@ import LoginScreen from "./src/screen/LoginScreen";
 import RegisterScreen from "./src/screen/RegisterScreen";
 import ChatScreen from "./src/screen/ChatScreen";
 import { auth } from './firebase'
+import ChatListScreen from "./src/screen/ChatListScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -35,6 +36,10 @@ export default function App() {
         <Stack.Screen
           name="Chat"
           component={ChatScreen}
+        />
+        <Stack.Screen
+          name="ChatList"
+          component={ChatListScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

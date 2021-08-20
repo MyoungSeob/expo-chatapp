@@ -7,7 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -34,6 +34,13 @@ const RegisterScreen = () => {
           .catch((error) => {
             alert(error.message);
           });
+      }).then(() => {
+        db.collection("Users").add({
+          name : name,
+        }).doc("names").then((docRef) => {
+          console.log(docRef.id);
+        })
+        .catch((error) => console.log(error));
       });
   };
   return (

@@ -17,7 +17,7 @@ const LoginScreen = ({ navigation }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.replace("Chat");
+        navigation.replace("ChatList");
       } else {
         navigation.navigate("Login");
       }
